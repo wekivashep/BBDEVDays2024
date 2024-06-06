@@ -1,0 +1,1 @@
+﻿In C# I have a Dictionary(string, object) variable called Row with a Key of "number" containing a phone number.  Write a single line return statement giving me the number element cleared of all formatting, such as spaces, parenthesis, hyphens etc

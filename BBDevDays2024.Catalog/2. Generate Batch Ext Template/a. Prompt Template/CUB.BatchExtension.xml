@@ -1,0 +1,237 @@
+﻿<BatchTypeExtensionSpec 
+    xmlns="bb_appfx_batchtypeextension" 
+    xmlns:c="bb_appfx_commontypes"
+    ID="370a8556-65dd-4af4-aba3-327a7fe59c7f"
+    Name="Batch Type Extension Spec Batch Extension"
+    Description="REPLACE_WITH_DESCRIPTION"
+    Author="Wekiva Software"
+    BaseTableName="USR_BATCHCONSTITUENTUPDATE_EXT"
+	BatchTypeCatalogID="877DBC83-98F9-4008-98A0-902FDB35E819"
+	>
+    
+	<AddRow DataFormInstanceID="e0594cd2-bf8b-44e2-82db-dafcfb07b85a" DataFormTemplateID="b1d8dacc-eacc-43fb-810f-bf57081f2f76">
+		<SaveImplementation SPName="USR_USP_DATAFORMTEMPLATE_ADD_BATCHTYPEEXTENSIONSPEC">
+			<c:CreateProcedureSQL>
+				<![CDATA[
+create procedure dbo.USR_USP_DATAFORMTEMPLATE_ADD_BATCHTYPEEXTENSIONSPEC
+(	
+	@ID uniqueidentifier output,
+    @CHANGEAGENTID uniqueidentifier = null,
+	@USR_FIELD1 nvarchar(10) = null,
+	@USR_FIELD2 nvarchar(20) = null,
+	@USR_FIELD3 nvarchar(max) = null
+)
+as	  
+	set nocount on;
+		
+    if @ID is null
+      set @ID = newid()
+
+    if @CHANGEAGENTID is null  
+        exec dbo.USP_CHANGEAGENT_GETORCREATECHANGEAGENT @CHANGEAGENTID output
+
+    declare @CURRENTDATE datetime
+    set @CURRENTDATE = getdate()
+
+    begin try
+	    -- handle inserting the data
+		insert into REPLACE_WITH_BASETABLENAME(
+			USR_FIELD1,
+			USR_FIELD2,
+			USR_FIELD3,
+            ADDEDBYID,
+			CHANGEDBYID,
+			DATEADDED,
+			DATECHANGED)
+		values(
+			@USR_FIELD1,
+			@USR_FIELD2,
+			@USR_FIELD3,
+			@CHANGEAGENTID,
+			@CHANGEAGENTID,
+			@CURRENTDATE,
+			@CURRENTDATE)
+			
+	End try
+	begin catch
+		exec dbo.USP_RAISE_ERROR;
+		return 1;
+	end catch	
+
+return 0;							 
+				]]>
+			</c:CreateProcedureSQL>
+		</SaveImplementation>
+	</AddRow>
+	
+	<EditRow DataFormInstanceID="72260d35-7122-4719-88f9-ae495a2c8460" DataFormTemplateID="36ce0d64-a858-4bb1-b874-3c62b5343f51">
+		<LoadImplementation SPName="USR_USP_DATAFORMTEMPLATE_EDITLOAD_BATCHTYPEEXTENSIONSPEC">
+			<c:CreateProcedureSQL>
+				<![CDATA[
+create procedure dbo.USR_USP_DATAFORMTEMPLATE_EDITLOAD_BATCHTYPEEXTENSIONSPEC
+(
+	@ID uniqueidentifier,
+    @TSLONG bigint = 0 output,
+	@DATALOADED bit = 0 output,
+	@USR_FIELD1 nvarchar(10) = null output,
+	@USR_FIELD2 nvarchar(20) = null output,
+	@USR_FIELD3 nvarchar(max) = null output
+)
+as
+	set nocount on;
+
+	set @DATALOADED = 0;
+	set @TSLONG = 0;
+
+	-- populate the output parameters, which correspond to fields on the form.  Note that
+	-- we set @DATALOADED = 1 to indicate that the load was successful.  Otherwise, the system
+	-- will display a "no data loaded" message.  Also note that we fetch the TSLONG so that concurrency
+	-- can be considered.
+  	select
+		@DATALOADED = 1,
+		@TSLONG = TSLONG,
+		@USR_FIELD1 = USR_FIELD1,
+		@USR_FIELD2 = USR_FIELD2,
+		@USR_FIELD3 = USR_FIELD3
+	from
+		REPLACE_WITH_BASETABLENAME
+	where
+		ID = @ID
+    
+return 0;  
+				]]>
+			</c:CreateProcedureSQL>
+		</LoadImplementation>
+		
+		<SaveImplementation SPName="USR_USP_DATAFORMTEMPLATE_EDITSAVE_BATCHTYPEEXTENSIONSPEC">
+			<c:CreateProcedureSQL>
+				<![CDATA[
+create procedure dbo.USR_USP_DATAFORMTEMPLATE_EDITSAVE_BATCHTYPEEXTENSIONSPEC
+(	
+	@ID uniqueidentifier,
+	@USR_FIELD1 nvarchar(10),
+	@USR_FIELD2 nvarchar(20),
+	@USR_FIELD3 nvarchar(max),
+	@CHANGEAGENTID uniqueidentifier = null
+)
+as								 
+	set nocount on;
+  
+	if @CHANGEAGENTID is null  
+		exec dbo.USP_CHANGEAGENT_GETORCREATECHANGEAGENT @CHANGEAGENTID output
+				
+	declare @CURRENTDATE datetime
+	set @CURRENTDATE = getdate()  
+	
+	begin try
+	  --save parameters with correspond to fields on the form.
+		update REPLACE_WITH_BASETABLENAME set
+			USR_FIELD1 = @USR_FIELD1,
+			USR_FIELD2 = @USR_FIELD2,
+			USR_FIELD3 = @USR_FIELD3,
+			CHANGEDBYID = @CHANGEAGENTID,
+			DATECHANGED = @CURRENTDATE
+		where
+			ID = @ID
+	End try
+	begin catch
+		exec dbo.USP_RAISE_ERROR;
+		return 1;
+	end catch									 
+				]]>
+			</c:CreateProcedureSQL>
+		</SaveImplementation>
+	</EditRow>
+	
+	<CommitRow>
+		<AddRow ContextRecordType="CONSTITUENT"  DataFormInstanceID="26e4241d-e883-45ef-a7da-6b0e2bba906f" DataFormTemplateID="f16b9539-f709-426a-8cfc-1b22f4b5ad12" RecordIDParameter="CONSTITUENTID">
+			<SaveImplementation SPName="USR_USP_DATAFORMTEMPLATE_COMMITADD_BATCHTYPEEXTENSIONSPEC">
+				<c:CreateProcedureSQL>
+					<![CDATA[
+create procedure dbo.USR_USP_DATAFORMTEMPLATE_COMMITADD_BATCHTYPEEXTENSIONSPEC
+(	
+	@ID uniqueidentifier output,
+    @CONSTITUENTID uniqueidentifier,
+	@CHANGEAGENTID uniqueidentifier = null,
+	@USR_FIELD1 nvarchar(10) = null,
+	@USR_FIELD2 nvarchar(20) = null,
+	@USR_FIELD3 nvarchar(max) = null
+)
+as
+	set nocount on;
+  
+	if @CHANGEAGENTID is null  
+		exec dbo.USP_CHANGEAGENT_GETORCREATECHANGEAGENT @CHANGEAGENTID output
+				
+	declare @CURRENTDATE datetime
+	set @CURRENTDATE = getdate()  
+  
+	begin try
+		-- add your insert statment here to commit the data to the system
+	end try
+	begin catch
+		exec dbo.USP_RAISE_ERROR;
+		return 1;
+	end catch
+  
+return 0;	
+					]]>
+				</c:CreateProcedureSQL>
+			</SaveImplementation>
+		</AddRow>
+		<EditRow DataFormInstanceID="09062EC5-01A0-4FE4-9AD2-E58D01411E39"
+		 DataFormTemplateID="E4AB4EE8-DEC1-4D58-9D71-0BC68E34836A" EditLoadField="ID">
+			<LoadImplementation SPName="USR_USP_DATAFORMTEMPLATE_COMMITEDITLOAD_BATCHTYPEEXTENSIONSPEC">
+				<c:CreateProcedureSQL>
+					<![CDATA[
+CREATE PROC USR_USP_DATAFORMTEMPLATE_COMMITEDITLOAD_VELOCITYLUMINATEONLINECUB_MSK 
+	@ID UNIQUEIDENTIFIER,
+	@TSLONG BIGINT = 0 OUTPUT,
+	@DATALOADED BIT = 0 OUTPUT,
+	@USR_FIELD1 nvarchar(10) = null OUTPUT,
+	@USR_FIELD2 nvarchar(20) = null OUTPUT,
+	@USR_FIELD3 nvarchar(max) = null OUTPUT
+
+AS
+/* DO COMMIT EDIT LOAD IMPLEMENTATION HERE */
+
+          ]]>
+				</c:CreateProcedureSQL>
+			</LoadImplementation>
+			<SaveImplementation SPName="USR_USP_DATAFORMTEMPLATE_COMMITEDIT_VELOCITYLUMINATEONLINECUB_MSK">
+				<c:CreateProcedureSQL>
+					<![CDATA[
+CREATE PROC USR_USP_DATAFORMTEMPLATE_COMMITEDIT_VELOCITYLUMINATEONLINECUB_MSK 
+	@ID UNIQUEIDENTIFIER,
+	@CHANGEAGENTID UNIQUEIDENTIFIER = NULL,
+	@USR_FIELD1 nvarchar(10),
+	@USR_FIELD2 nvarchar(20),
+	@USR_FIELD3 nvarchar(max)
+AS
+
+/* DO COMMIT EDIT IMPLEMENTATION HERE */
+
+
+          ]]>
+				</c:CreateProcedureSQL>
+			</SaveImplementation>
+
+		</EditRow>
+	</CommitRow>
+
+	<!-- optionally, list any client-side event handlers that will be plugged into the event model for the batch data entry form.  Each handler
+	refers to a class that inherits from Browser.Batch.BatchEntryHandler -->
+	<!--<EventHandler AssemblyName="REPLACE_WITH_ASSEMBLYNAME" ClassName="REPLACE_WITH_CLASSNAME"/>-->
+
+	<!-- describe fields on the form, which correspond to parameters on the SP.  Note that system parameters 
+	like the record ID, DATALOADED, TSLONG, and CURRENTAPPUSERID need not be listed. -->
+	<FormMetaData xmlns="bb_appfx_commontypes">
+		<FormFields>
+			<FormField FieldID="USR_FIELD1" Caption="Field 1" DataType="String" MaxLength="10" />
+			<FormField FieldID="USR_FIELD2" Caption="Field 2" DataType="String" MaxLength="20" />
+			<FormField FieldID="USR_FIELD3" Caption="Field 3" DataType="String" />
+		</FormFields>
+	</FormMetaData>
+	
+</BatchTypeExtensionSpec>
+

@@ -1,0 +1,101 @@
+<EditDataFormTemplateSpec 
+    xmlns:c="bb_appfx_commontypes"
+    ID="b9c4688b-6f1d-498f-9184-c42a3d125a59"
+    Name="USR BIOEXTENSION Edit Form"
+    Description="Used for editing the given USR BIOEXTENSION"
+    Author="Wekiva Software"
+    RecordType="CONSTITUENT"
+    DataFormInstanceID="2cd4dc50-a95a-4c41-b76a-57947ca9828f"
+    c:SecurityUIFolder="USR BIOEXTENSION"
+    OwnerIDMapperID="00000000-0000-0000-0000-000000000000"
+    xmlns="bb_appfx_editdataformtemplate"
+    >
+    <SPDataForm>
+        <LoadImplementation SPName="USR_USP_DATAFORMTEMPLATE_EDITLOAD_USR_BIOEXTENSION">
+            <c:CreateProcedureSQL>
+<![CDATA[
+create procedure dbo.USR_USP_DATAFORMTEMPLATE_EDITLOAD_USR_BIOEXTENSION
+(
+    @ID uniqueidentifier,
+    @DATALOADED bit = 0 output,
+    @TSLONG bigint = 0 output,
+    @EXTENSIONFIELD1 bit = null output,
+    @EXTENSIONFIELD2 nvarchar(200) = null output
+)
+as
+
+	set nocount on;
+
+	-- be sure to set these, in case the select returns no rows
+	set @DATALOADED = 1
+	set @TSLONG = 0
+
+	-- populate the output parameters, which correspond to fields on the form.  Note that
+	-- we set @DATALOADED = 1 to indicate that the load was successful.  Otherwise, the system
+	-- will display a "no data loaded" message.  Also note that we fetch the TSLONG so that concurrency
+	-- can be considered.
+	select
+		@DATALOADED = 1,
+		@TSLONG = TSLONG,
+        @EXTENSIONFIELD1 = EXTENSIONFIELD1, 
+        @EXTENSIONFIELD2 = EXTENSIONFIELD2
+	from dbo.USR_BIOEXTENSION
+	where ID = @ID
+
+	return 0;
+]]>
+</c:CreateProcedureSQL>
+        </LoadImplementation>
+        <SaveImplementation SPName="USR_USP_DATAFORMTEMPLATE_EDIT_USR_BIOEXTENSION">
+            <c:CreateProcedureSQL>
+<![CDATA[
+create procedure dbo.USR_USP_DATAFORMTEMPLATE_EDIT_USR_BIOEXTENSION
+(
+	@ID uniqueidentifier,
+	@CHANGEAGENTID uniqueidentifier = null,
+    @EXTENSIONFIELD1 bit,
+    @EXTENSIONFIELD2 nvarchar(200)
+)
+as
+
+	set nocount on;
+
+	if @CHANGEAGENTID is null  
+		exec dbo.USP_CHANGEAGENT_GETORCREATECHANGEAGENT @CHANGEAGENTID output
+						
+	begin try
+		-- handle updating the data
+		update dbo.USR_BIOEXTENSION set
+            EXTENSIONFIELD1 = @EXTENSIONFIELD1,
+            EXTENSIONFIELD2 = @EXTENSIONFIELD2,
+
+			CHANGEDBYID = @CHANGEAGENTID,
+			DATECHANGED = getdate()
+		where ID = @ID
+	end try
+	begin catch
+		exec dbo.USP_RAISE_ERROR
+		return 1
+	end catch
+
+return 0;
+]]>
+</c:CreateProcedureSQL>
+        </SaveImplementation>
+    </SPDataForm>
+    <c:FormMetaData FixedDialog="true">
+        <c:FormFields>
+            <c:FormField FieldID="EXTENSIONFIELD1" DataType="Boolean" Caption="Extensionfield1" />
+            <c:FormField FieldID="EXTENSIONFIELD2" MaxLength="200" Caption="Extensionfield2" Multiline="true" />
+        </c:FormFields>
+        <c:FormUIComponent />
+
+        <c:WebUIComponent>
+            <c:UIModel AssemblyName="BBDEVDays2024.UIModel.dll" ClassName="BBDEVDays2024.UIModel.USRBIOEXTENSIONEditFormUIModel" />
+            <c:WebUI>
+                <c:ExternalResource Url="browser/htmlforms/custom/bbdevdays2024/USRBIOEXTENSIONEditForm.html" />
+            </c:WebUI>
+        </c:WebUIComponent>
+    </c:FormMetaData>
+	<c:DataFormExtension DataFormInstanceID="788ab947-26ed-40c4-865e-8fe29577e593" RenderStyle="AfterParent" TabCaption="TabCaption" />
+</EditDataFormTemplateSpec>

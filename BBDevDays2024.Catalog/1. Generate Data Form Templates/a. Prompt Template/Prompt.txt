@@ -1,0 +1,16 @@
+﻿using the Blackbaud CRM SDK and starting with the table spec included below, create an add data form spec and edit data form spec: <TableSpec xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="bb_appfx_table" ID="6950a573-4e0c-47df-8142-afecd8a0c972" Name="Velocity LO TeamRaiser Team Staging" Description="Staging table created by Zuri Group Velocity" Author="Zuri Group" Tablename="USR_VELOCITY_LO_TR_TEAMS">
+  <Fields>
+    <TextField Name="TEAMID" Length="20" />
+    <TextField Name="EVENTID" Length="20" />
+    <TextField Name="COMPANYID" Length="20" />
+    <TextField Name="CAPTAINCONSID" Length="20" />
+    <TextField Name="NAME" Length="200" />
+    <TextField Name="DESCRIPTION" Length="200" />
+    <TextField Name="DIVISION" Length="100" />
+    <TextField Name="TYPE" Length="100" />
+    <MoneyField Name="GOAL" />
+    <MoneyField Name="MEMBERGOAL" />
+    <BooleanField Name="ISHONORARYTEAM" />
+    <TextField Name="PREVIOUSTEAMID" Length="20" />
+  </Fields>
+</TableSpec>

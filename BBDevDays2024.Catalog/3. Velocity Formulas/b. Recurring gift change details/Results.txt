@@ -1,0 +1,5 @@
+﻿First try:
+return Regex.Match(Row["CAMPAIGN_STATUS"].ToString(), @"\b\d+(\.\d+)?\b").Value; 
+
+Second try:
+return Regex.Match(Row["CAMPAIGN_STATUS"].ToString(), @"\bamount:\s*(\d+(\.\d+)?)\b").Groups[1].Value;

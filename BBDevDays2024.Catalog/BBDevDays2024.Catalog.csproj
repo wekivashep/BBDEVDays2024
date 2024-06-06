@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BB06B2D7-3828-4D9D-92FF-9521F8C956EF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BBDevDays2024.Catalog</RootNamespace>
+    <AssemblyName>BBDevDays2024.Catalog</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>C:\Program Files\Blackbaud\bbappfx\vroot\bin\custom</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>C:\Program Files\Blackbaud\bbappfx\vroot\bin\custom</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>
+    </CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Blackbaud.AppFx.Server, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Blackbaud.AppFx.XmlTypes, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="1. Generate Data Form Templates\a. Prompt Template\Prompt.txt" />
+    <Content Include="2. Generate Batch Ext Template\a. Prompt Template\Prompt.txt" />
+    <Content Include="2. Generate Batch Ext Template\d. Microsoft Copilot\Prompt too long.txt" />
+    <Content Include="3. Velocity Formulas\a. Phone number cleaner\Prompt.txt" />
+    <Content Include="3. Velocity Formulas\a. Phone number cleaner\Results.txt" />
+    <Content Include="3. Velocity Formulas\b. Recurring gift change details\Prompt.txt" />
+    <Content Include="3. Velocity Formulas\b. Recurring gift change details\Results.txt" />
+    <Content Include="4. Bio form extension\Prompt.txt" />
+    <Content Include="4. Bio form extension\Response.txt" />
+    <EmbeddedResource Include="4. Bio form extension\USR_BIOEXTENSION.xml" />
+    <EmbeddedResource Include="4. Bio form extension\USR BIOEXTENSION.Edit.xml" />
+    <EmbeddedResource Include="2. Generate Batch Ext Template\c. Google Gemini\BatchTypeExtensionSpec.BatchExtension1.xml" />
+    <EmbeddedResource Include="2. Generate Batch Ext Template\b. Chat GPT\BatchTypeExtensionSpec.BatchExtension1.xml" />
+    <EmbeddedResource Include="1. Generate Data Form Templates\e. CRUD package wizard\Velocity LO TeamRaiser Team Staging.Edit.xml" />
+    <EmbeddedResource Include="1. Generate Data Form Templates\e. CRUD package wizard\Velocity LO TeamRaiser Team Staging.Add.xml" />
+    <EmbeddedResource Include="1. Generate Data Form Templates\d. Microsoft Copilot\EditDataFormTemplateSpec.Edit1.xml" />
+    <EmbeddedResource Include="1. Generate Data Form Templates\d. Microsoft Copilot\AddDataFormTemplateSpec.Add1.xml" />
+    <EmbeddedResource Include="1. Generate Data Form Templates\c. Google Gemini\ViewDataFormTemplateSpec.View1.xml" />
+    <EmbeddedResource Include="1. Generate Data Form Templates\b. Chat GPT\EditDataFormTemplateSpec.Edit1.xml" />
+    <EmbeddedResource Include="1. Generate Data Form Templates\b. Chat GPT\AddDataFormTemplateSpec.Add1.xml" />
+    <EmbeddedResource Include="1. Generate Data Form Templates\a. Prompt Template\USR_VELOCITY_LO_TR_TEAMS.xml" />
+    <Content Include="2. Generate Batch Ext Template\a. Prompt Template\CUB.BatchExtension.xml" />
+    <EmbeddedResource Include="2. Generate Batch Ext Template\a. Prompt Template\USR_BATCHCONSTITUENTUPDATE_EXT.xml" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

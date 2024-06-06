@@ -1,0 +1,1 @@
+﻿In C# I have a Dictionary(string, object) variable called Row with a Key of "CAMPAIGN_STATUS" containing text like "change [ amount: 100.00; recurring status: CANCELED ]".  Write a single line return statement to extract the 100.00 from this string.  It will always be a numeric value.

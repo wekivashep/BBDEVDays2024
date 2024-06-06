@@ -1,0 +1,29 @@
+﻿<AddDataFormSpec
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="bb_appfx_adddataform"
+    ID="NEW_GUID_FOR_ADD_FORM"
+    Name="Add Velocity LO TeamRaiser Team"
+    Description="Form to add new Velocity LO TeamRaiser Team"
+    Author="Zuri Group"
+    DataFormInstanceID="NEW_GUID_FOR_DATA_FORM_INSTANCE"
+    Tablename="USR_VELOCITY_LO_TR_TEAMS"
+    SaveImplementation="SQL"
+    DataFormTemplateSpecID="NEW_GUID_FOR_TEMPLATE_SPEC"
+    RecordType="Table"
+    RecordIDFieldName="TEAMID">
+	<DataFormFields>
+		<DataFormField FieldID="TEAMID" DataType="String" MaxLength="20" Required="true" />
+		<DataFormField FieldID="EVENTID" DataType="String" MaxLength="20" Required="true" />
+		<DataFormField FieldID="COMPANYID" DataType="String" MaxLength="20" Required="true" />
+		<DataFormField FieldID="CAPTAINCONSID" DataType="String" MaxLength="20" />
+		<DataFormField FieldID="NAME" DataType="String" MaxLength="200" Required="true" />
+		<DataFormField FieldID="DESCRIPTION" DataType="String" MaxLength="200" />
+		<DataFormField FieldID="DIVISION" DataType="String" MaxLength="100" />
+		<DataFormField FieldID="TYPE" DataType="String" MaxLength="100" />
+		<DataFormField FieldID="GOAL" DataType="Money" />
+		<DataFormField FieldID="MEMBERGOAL" DataType="Money" />
+		<DataFormField FieldID="ISHONORARYTEAM" DataType="Boolean" />
+		<DataFormField FieldID="PREVIOUSTEAMID" DataType="String" MaxLength="20" />
+	</DataFormFields>
+</AddDataFormSpec>

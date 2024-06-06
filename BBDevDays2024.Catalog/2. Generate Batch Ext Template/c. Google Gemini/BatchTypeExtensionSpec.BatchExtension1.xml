@@ -1,0 +1,106 @@
+﻿<BatchTypeExtensionSpec xmlns="bb_appfx_batchtypeextension"
+  xmlns:c="bb_appfx_commontypes"
+  ID="370a8556-65dd-4af4-aba3-327a7fe59c7f"
+  Name="Batch Type Extension Spec Batch Extension"
+  Description="REPLACE_WITH_DESCRIPTION"
+  Author="Wekiva Software"
+  BaseTableName="USR_BATCHCONSTITUENTUPDATE_EXT"
+  BatchTypeCatalogID="877DBC83-98F9-4008-98A0-902FDB35E819">
+
+	<AddRow DataFormInstanceID="e0594cd2-bf8b-44e2-82db-dafcfb07b85a" DataFormTemplateID="b1d8dacc-eacc-43fb-810f-bf57081f2f76">
+		<SaveImplementation SPName="USR_USP_DATAFORMTEMPLATE_ADD_BATCHTYPEEXTENSIONSPEC">
+			<c:CreateProcedureSQL>
+				<![CDATA[
+create procedure dbo.USR_USP_DATAFORMTEMPLATE_ADD_BATCHTYPEEXTENSIONSPEC
+(
+  @ID uniqueidentifier output,
+  @CHANGEAGENTID uniqueidentifier = null,
+  @CONSID nvarchar(50) = null, -- Cons ID
+  @LASTLOGINDATE datetime = null, -- Last login date
+  @CREATEDBY nvarchar(50) = null, -- Created by
+  @PRIMARYEMAIL nvarchar(200) = null, -- Email address
+  @DONOTEMAIL bit = null, -- Do not email
+  @EMAILSTATUS nvarchar(100) = null, -- Email Status
+  @OPTOUTDATE datetime = null, -- Opt out date
+  @OPTOUTMETHOD nvarchar(100) = null, -- Opt out method
+  @HOMEPHONE nvarchar(200) = null, -- Home phone
+  @WORKPHONE nvarchar(200) = null, -- Work phone
+  @CELLPHONE nvarchar(200) = null, -- Cell phone
+  @COUNTRYID uniqueidentifier = null, -- Country
+  @ADDRESSBLOCK nvarchar(500) = null, -- Address block
+  @CITY nvarchar(200) = null, -- City
+  @STATEID uniqueidentifier = null, -- State
+  @ZIP nvarchar(200) = null -- Zip
+)
+as
+  set nocount on;
+
+  if @ID is null
+    set @ID = newid()
+
+  if @CHANGEAGENTID is null
+    exec dbo.USP_CHANGEAGENT_GETORCREATECHANGEAGENT @CHANGEAGENTID output
+
+  declare @CURRENTDATE datetime
+  set @CURRENTDATE = getdate()
+
+  begin try
+    -- handle inserting the data
+    insert into REPLACE_WITH_BASETABLENAME (
+      CONSID,
+      LASTLOGINDATE,
+      CREATEDBY,
+      PRIMARYEMAIL,
+      DONOTEMAIL,
+      EMAILSTATUS,
+      OPTOUTDATE,
+      OPTOUTMETHOD,
+      HOMEPHONE,
+      WORKPHONE,
+      CELLPHONE,
+      COUNTRYID,
+      ADDRESSBLOCK,
+      CITY,
+      STATEID,
+      ZIP,
+      ADDEDBYID,
+      CHANGEDBYID,
+      DATEADDED,
+      DATECHANGED
+    )
+    values (
+      @CONSID,
+      @LASTLOGINDATE,
+      @CREATEDBY,
+      @PRIMARYEMAIL,
+      @DONOTEMAIL,
+      @EMAILSTATUS,
+      @OPTOUTDATE,
+      @OPTOUTMETHOD,
+      @HOMEPHONE,
+      @WORKPHONE,
+      @CELLPHONE,
+      @COUNTRYID,
+      @ADDRESSBLOCK,
+      @CITY,
+      @STATEID,
+      @ZIP,
+      @CHANGEAGENTID,
+      @CHANGEAGENTID,
+      @CURRENTDATE,
+      @CURRENTDATE
+    )
+
+  End try
+  begin catch
+    exec dbo.USP_RAISE_ERROR;
+    return 1;
+  end catch
+
+  return 0;
+]]>
+			</c:CreateProcedureSQL>
+		</SaveImplementation>
+	</AddRow>
+
+

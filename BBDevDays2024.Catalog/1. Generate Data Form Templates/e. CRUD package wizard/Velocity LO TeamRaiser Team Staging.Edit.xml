@@ -1,0 +1,143 @@
+<EditDataFormTemplateSpec 
+    xmlns:c="bb_appfx_commontypes"
+    ID="fe6a4565-bc23-4188-82c7-3e06166829b9"
+    Name="Velocity LO TeamRaiser Team Staging Edit Form"
+    Description="Used for editing the given Velocity LO TeamRaiser Team Staging"
+    Author="Wekiva Software"
+    RecordType="Velocity LO TeamRaiser Team Staging"
+    DataFormInstanceID="cee8ac93-c4c6-43fb-b383-3e786c27cf54"
+    c:SecurityUIFolder="Velocity LO TeamRaiser Team Staging"
+    OwnerIDMapperID="00000000-0000-0000-0000-000000000000"
+    xmlns="bb_appfx_editdataformtemplate"
+    >
+    <SPDataForm>
+        <LoadImplementation SPName="USR_USP_DATAFORMTEMPLATE_EDITLOAD_VELOCITY_LO_TEAMRAISER_TEAM_STAGING">
+            <c:CreateProcedureSQL>
+<![CDATA[
+create procedure dbo.USR_USP_DATAFORMTEMPLATE_EDITLOAD_VELOCITY_LO_TEAMRAISER_TEAM_STAGING
+(
+    @ID uniqueidentifier,
+    @DATALOADED bit = 0 output,
+    @TSLONG bigint = 0 output,
+    @TEAMID nvarchar(20) = null output,
+    @EVENTID nvarchar(20) = null output,
+    @COMPANYID nvarchar(20) = null output,
+    @CAPTAINCONSID nvarchar(20) = null output,
+    @NAME nvarchar(200) = null output,
+    @DESCRIPTION nvarchar(200) = null output,
+    @DIVISION nvarchar(100) = null output,
+    @TYPE nvarchar(100) = null output,
+    @GOAL money = null output,
+    @MEMBERGOAL money = null output,
+    @ISHONORARYTEAM bit = null output,
+    @PREVIOUSTEAMID nvarchar(20) = null output
+)
+as
+
+	set nocount on;
+
+	-- be sure to set these, in case the select returns no rows
+	set @DATALOADED = 0
+	set @TSLONG = 0
+
+	-- populate the output parameters, which correspond to fields on the form.  Note that
+	-- we set @DATALOADED = 1 to indicate that the load was successful.  Otherwise, the system
+	-- will display a "no data loaded" message.  Also note that we fetch the TSLONG so that concurrency
+	-- can be considered.
+	select
+		@DATALOADED = 1,
+		@TSLONG = TSLONG,
+        @TEAMID = TEAMID, 
+        @EVENTID = EVENTID, 
+        @COMPANYID = COMPANYID, 
+        @CAPTAINCONSID = CAPTAINCONSID, 
+        @NAME = NAME, 
+        @DESCRIPTION = DESCRIPTION, 
+        @DIVISION = DIVISION, 
+        @TYPE = TYPE, 
+        @GOAL = GOAL, 
+        @MEMBERGOAL = MEMBERGOAL, 
+        @ISHONORARYTEAM = ISHONORARYTEAM, 
+        @PREVIOUSTEAMID = PREVIOUSTEAMID
+	from dbo.USR_VELOCITY_LO_TR_TEAMS
+	where ID = @ID
+
+	return 0;
+]]>
+</c:CreateProcedureSQL>
+        </LoadImplementation>
+        <SaveImplementation SPName="USR_USP_DATAFORMTEMPLATE_EDIT_VELOCITY_LO_TEAMRAISER_TEAM_STAGING">
+            <c:CreateProcedureSQL>
+<![CDATA[
+create procedure dbo.USR_USP_DATAFORMTEMPLATE_EDIT_VELOCITY_LO_TEAMRAISER_TEAM_STAGING
+(
+	@ID uniqueidentifier,
+	@CHANGEAGENTID uniqueidentifier = null,
+    @TEAMID nvarchar(20),
+    @EVENTID nvarchar(20),
+    @COMPANYID nvarchar(20),
+    @CAPTAINCONSID nvarchar(20),
+    @NAME nvarchar(200),
+    @DESCRIPTION nvarchar(200),
+    @DIVISION nvarchar(100),
+    @TYPE nvarchar(100),
+    @GOAL money,
+    @MEMBERGOAL money,
+    @ISHONORARYTEAM bit,
+    @PREVIOUSTEAMID nvarchar(20)
+)
+as
+
+	set nocount on;
+
+	if @CHANGEAGENTID is null  
+		exec dbo.USP_CHANGEAGENT_GETORCREATECHANGEAGENT @CHANGEAGENTID output
+						
+	begin try
+		-- handle updating the data
+		update dbo.USR_VELOCITY_LO_TR_TEAMS set
+            TEAMID = @TEAMID,
+            EVENTID = @EVENTID,
+            COMPANYID = @COMPANYID,
+            CAPTAINCONSID = @CAPTAINCONSID,
+            NAME = @NAME,
+            DESCRIPTION = @DESCRIPTION,
+            DIVISION = @DIVISION,
+            TYPE = @TYPE,
+            GOAL = @GOAL,
+            MEMBERGOAL = @MEMBERGOAL,
+            ISHONORARYTEAM = @ISHONORARYTEAM,
+            PREVIOUSTEAMID = @PREVIOUSTEAMID,
+
+			CHANGEDBYID = @CHANGEAGENTID,
+			DATECHANGED = getdate()
+		where ID = @ID
+	end try
+	begin catch
+		exec dbo.USP_RAISE_ERROR
+		return 1
+	end catch
+
+return 0;
+]]>
+</c:CreateProcedureSQL>
+        </SaveImplementation>
+    </SPDataForm>
+    <c:FormMetaData FixedDialog="true">
+        <c:FormFields>
+            <c:FormField FieldID="TEAMID" MaxLength="20" Caption="Teamid" />
+            <c:FormField FieldID="EVENTID" MaxLength="20" Caption="Eventid" />
+            <c:FormField FieldID="COMPANYID" MaxLength="20" Caption="Companyid" />
+            <c:FormField FieldID="CAPTAINCONSID" MaxLength="20" Caption="Captainconsid" />
+            <c:FormField FieldID="NAME" MaxLength="200" Caption="Name" Multiline="true" />
+            <c:FormField FieldID="DESCRIPTION" MaxLength="200" Caption="Description" Multiline="true" />
+            <c:FormField FieldID="DIVISION" MaxLength="100" Caption="Division" />
+            <c:FormField FieldID="TYPE" MaxLength="100" Caption="Type" />
+            <c:FormField FieldID="GOAL" DataType="Money" Caption="Goal" />
+            <c:FormField FieldID="MEMBERGOAL" DataType="Money" Caption="Membergoal" />
+            <c:FormField FieldID="ISHONORARYTEAM" DataType="Boolean" Caption="Ishonoraryteam" />
+            <c:FormField FieldID="PREVIOUSTEAMID" MaxLength="20" Caption="Previousteamid" />
+        </c:FormFields>
+        <c:FormUIComponent />
+    </c:FormMetaData>
+</EditDataFormTemplateSpec>

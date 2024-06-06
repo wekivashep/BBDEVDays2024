@@ -1,0 +1,33 @@
+﻿<TableSpec 
+	xmlns="bb_appfx_table"
+	xmlns:c="bb_appfx_commontypes" 
+	ID="8887bb91-b930-4200-aec8-844c3a294bd4"
+	Name="USR BATCHCONSTITUENTUPDATE EXT"
+	Description="Stores information about usr batchconstituentupdate ext records"
+	Author="Wekiva Software"
+	Tablename="USR_BATCHCONSTITUENTUPDATE_EXT"		   
+	IsBuiltIn="false"
+	PrimaryKeyAsForeignKeyTablename="BATCHCONSTITUENTUPDATE"
+	>
+
+	<!-- define fields on the table -->
+	<Fields>
+		<TextField Name="CONSID" Length="50" Description="Column caption: Cons ID"/>
+		<DateField Name="LASTLOGINDATE" IncludeTime="true" Description="Column caption: Last login date"/>
+		<TextField Name="CREATEDBY" Length="50" IsNullable="true" Required="false" Description="Column caption: Created by"/>
+		<TextField Name="PRIMARYEMAIL" Length="200" Description="Column caption: Email address"/>
+		<BooleanField Description="Indicates this email address should not receive emails. Column caption: Do not email" Name="DONOTEMAIL" />
+		<TextField Name="EMAILSTATUS" Required="false" Length="100" Description="Column caption: Email Status"/>
+		<DateField Name="OPTOUTDATE" Description="Column caption: Opt out date"/>
+		<TextField Name="OPTOUTMETHOD" Required="false" Length="100" Description="Column caption: Opt out method"/>
+		<TextField Name="HOMEPHONE" Length="200" Description="Column caption: Home phone"/>
+		<TextField Name="WORKPHONE" Length="200" Description="Column caption: Work phone"/>
+		<TextField Name="CELLPHONE" Length="200" Description="Column caption: Cell phone"/>
+		<GuidField Name="COUNTRYID" Description="Column caption: Country"/>
+		<TextField Name="ADDRESSBLOCK" Length="500" Description="Column caption: Address block"/>
+		<TextField Name="CITY" Length="200" Description="Column caption: City"/>
+		<GuidField Name="STATEID" Description="Column caption: State"/>
+		<TextField Name="ZIP" Length="200" Description="Column caption: Zip"/>
+	</Fields>
+
+</TableSpec>

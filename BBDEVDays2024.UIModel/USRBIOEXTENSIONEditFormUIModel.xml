@@ -1,0 +1,10 @@
+﻿<UIModelWizardMetadata>
+  <SpecFileName>USR BIOEXTENSION.Edit.xml</SpecFileName>
+  <Namespace></Namespace>
+  <ClassName>USRBIOEXTENSIONEditFormUIModel</ClassName>
+  <HtmlInfo GenerateHtml="true">
+    <HtmlFile>USRBIOEXTENSIONEditForm.html</HtmlFile>
+    <HtmlFolder>htmlforms\custom\bbdevdays2024\</HtmlFolder>
+  </HtmlInfo>
+  <GenerateFromDatabase>false</GenerateFromDatabase>
+</UIModelWizardMetadata>

@@ -1,0 +1,6 @@
+﻿<AddDataFormSpec xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="bb_appfx_commontypes" ID="6950a573-4e0c-47df-8142-afecd8a0c972" Name="Add Velocity LO TeamRaiser Team Staging" Description="Add form for Velocity LO TeamRaiser Team Staging" Author="Zuri Group">
+	<Fields>
+		<!-- Add fields here -->
+	</Fields>
+</AddDataFormSpec>
+

@@ -1,0 +1,35 @@
+﻿<ViewDataFormTemplate xmlns="bb_appfx_viewdataformtemplate"
+  xmlns:common="bb_appfx_commontypes"
+  ID="**{Unique Identifier Here}**"
+  Name="Add Velocity LO TeamRaiser Team"
+  Description="Form to add new Velocity LO TeamRaiser Team"
+  RecordType="USR_VELOCITY_LO_TR_TEAMS"
+  SecurityUIFolder="**{Your Security Folder Here}**">
+	<TableSpecRef>6950a573-4e0c-47df-8142-afecd8a0c972</TableSpecRef>
+	<Sections>
+		<Section ID="General Information" Title="General Information">
+			<Fields>
+				<FieldRef Name="TEAMID" Label="Team ID" IsRequired="true" />
+				<FieldRef Name="EVENTID" Label="Event ID" IsRequired="true" />
+				<FieldRef Name="COMPANYID" Label="Company ID" IsRequired="true" />
+				<FieldRef Name="CAPTAINCONSID" Label="Captain Constituent ID" />
+				<FieldRef Name="NAME" Label="Team Name" IsRequired="true" />
+				<FieldRef Name="DESCRIPTION" Label="Description" />
+				<FieldRef Name="DIVISION" Label="Division" />
+				<FieldRef Name="TYPE" Label="Type" />
+			</Fields>
+		</Section>
+		<Section ID="Goal Information" Title="Goal Information">
+			<Fields>
+				<FieldRef Name="GOAL" Label="Goal Amount" />
+				<FieldRef Name="MEMBERGOAL" Label="Member Goal Amount" />
+			</Fields>
+		</Section>
+		<Section ID="Additional Settings" Title="Additional Settings">
+			<Fields>
+				<FieldRef Name="ISHONORARYTEAM" Label="Is Honorary Team" />
+				<FieldRef Name="PREVIOUSTEAMID" Label="Previous Team ID" />
+			</Fields>
+		</Section>
+	</Sections>
+</ViewDataFormTemplate>

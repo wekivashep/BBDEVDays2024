@@ -1,0 +1,13 @@
+﻿<TableSpec xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+		   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		   xmlns="bb_appfx_table" 
+	ID="c7590a31-c056-4691-b352-4df9c157ae82" 
+	Name="USR BIOEXTENSION" 
+	Description="Stores information about usr bioextension records" 
+	Author="Wekiva Software" 
+	Tablename="USR_BIOEXTENSION">
+	<Fields>
+		<BooleanField Name="EXTENSIONFIELD1" />
+		<TextField Name="EXTENSIONFIELD2" Length="200" />
+	</Fields>
+</TableSpec>

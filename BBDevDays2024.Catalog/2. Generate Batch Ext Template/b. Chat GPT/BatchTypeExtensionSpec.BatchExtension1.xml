@@ -1,0 +1,431 @@
+﻿<BatchTypeExtensionSpec
+    xmlns="bb_appfx_batchtypeextension"
+    xmlns:c="bb_appfx_commontypes"
+    ID="370a8556-65dd-4af4-aba3-327a7fe59c7f"
+    Name="Batch Type Extension Spec Batch Extension"
+    Description="REPLACE_WITH_DESCRIPTION"
+    Author="Wekiva Software"
+    BaseTableName="USR_BATCHCONSTITUENTUPDATE_EXT"
+    BatchTypeCatalogID="877DBC83-98F9-4008-98A0-902FDB35E819">
+
+	<AddRow DataFormInstanceID="e0594cd2-bf8b-44e2-82db-dafcfb07b85a" DataFormTemplateID="b1d8dacc-eacc-43fb-810f-bf57081f2f76">
+		<SaveImplementation SPName="USR_USP_DATAFORMTEMPLATE_ADD_BATCHTYPEEXTENSIONSPEC">
+			<c:CreateProcedureSQL>
+				<![CDATA[
+create procedure dbo.USR_USP_DATAFORMTEMPLATE_ADD_BATCHTYPEEXTENSIONSPEC
+(
+    @ID uniqueidentifier output,
+    @CHANGEAGENTID uniqueidentifier = null,
+    @CONSID nvarchar(50) = null,
+    @LASTLOGINDATE datetime = null,
+    @CREATEDBY nvarchar(50) = null,
+    @PRIMARYEMAIL nvarchar(200) = null,
+    @DONOTEMAIL bit = null,
+    @EMAILSTATUS nvarchar(100) = null,
+    @OPTOUTDATE datetime = null,
+    @OPTOUTMETHOD nvarchar(100) = null,
+    @HOMEPHONE nvarchar(200) = null,
+    @WORKPHONE nvarchar(200) = null,
+    @CELLPHONE nvarchar(200) = null,
+    @COUNTRYID uniqueidentifier = null,
+    @ADDRESSBLOCK nvarchar(500) = null,
+    @CITY nvarchar(200) = null,
+    @STATEID uniqueidentifier = null,
+    @ZIP nvarchar(200) = null
+)
+as
+    set nocount on;
+
+    if @ID is null
+        set @ID = newid()
+
+    if @CHANGEAGENTID is null  
+        exec dbo.USP_CHANGEAGENT_GETORCREATECHANGEAGENT @CHANGEAGENTID output
+
+    declare @CURRENTDATE datetime
+    set @CURRENTDATE = getdate()
+
+    begin try
+        insert into USR_BATCHCONSTITUENTUPDATE_EXT(
+            CONSID,
+            LASTLOGINDATE,
+            CREATEDBY,
+            PRIMARYEMAIL,
+            DONOTEMAIL,
+            EMAILSTATUS,
+            OPTOUTDATE,
+            OPTOUTMETHOD,
+            HOMEPHONE,
+            WORKPHONE,
+            CELLPHONE,
+            COUNTRYID,
+            ADDRESSBLOCK,
+            CITY,
+            STATEID,
+            ZIP,
+            ADDEDBYID,
+            CHANGEDBYID,
+            DATEADDED,
+            DATECHANGED)
+        values(
+            @CONSID,
+            @LASTLOGINDATE,
+            @CREATEDBY,
+            @PRIMARYEMAIL,
+            @DONOTEMAIL,
+            @EMAILSTATUS,
+            @OPTOUTDATE,
+            @OPTOUTMETHOD,
+            @HOMEPHONE,
+            @WORKPHONE,
+            @CELLPHONE,
+            @COUNTRYID,
+            @ADDRESSBLOCK,
+            @CITY,
+            @STATEID,
+            @ZIP,
+            @CHANGEAGENTID,
+            @CHANGEAGENTID,
+            @CURRENTDATE,
+            @CURRENTDATE)
+    end try
+    begin catch
+        exec dbo.USP_RAISE_ERROR;
+        return 1;
+    end catch
+
+return 0;
+                ]]>
+			</c:CreateProcedureSQL>
+		</SaveImplementation>
+	</AddRow>
+
+	<EditRow DataFormInstanceID="72260d35-7122-4719-88f9-ae495a2c8460" DataFormTemplateID="36ce0d64-a858-4bb1-b874-3c62b5343f51">
+		<LoadImplementation SPName="USR_USP_DATAFORMTEMPLATE_EDITLOAD_BATCHTYPEEXTENSIONSPEC">
+			<c:CreateProcedureSQL>
+				<![CDATA[
+create procedure dbo.USR_USP_DATAFORMTEMPLATE_EDITLOAD_BATCHTYPEEXTENSIONSPEC
+(
+    @ID uniqueidentifier,
+    @TSLONG bigint = 0 output,
+    @DATALOADED bit = 0 output,
+    @CONSID nvarchar(50) = null output,
+    @LASTLOGINDATE datetime = null output,
+    @CREATEDBY nvarchar(50) = null output,
+    @PRIMARYEMAIL nvarchar(200) = null output,
+    @DONOTEMAIL bit = null output,
+    @EMAILSTATUS nvarchar(100) = null output,
+    @OPTOUTDATE datetime = null output,
+    @OPTOUTMETHOD nvarchar(100) = null output,
+    @HOMEPHONE nvarchar(200) = null output,
+    @WORKPHONE nvarchar(200) = null output,
+    @CELLPHONE nvarchar(200) = null output,
+    @COUNTRYID uniqueidentifier = null output,
+    @ADDRESSBLOCK nvarchar(500) = null output,
+    @CITY nvarchar(200) = null output,
+    @STATEID uniqueidentifier = null output,
+    @ZIP nvarchar(200) = null output
+)
+as
+    set nocount on;
+
+    set @DATALOADED = 0;
+    set @TSLONG = 0;
+
+    select
+        @DATALOADED = 1,
+        @TSLONG = TSLONG,
+        @CONSID = CONSID,
+        @LASTLOGINDATE = LASTLOGINDATE,
+        @CREATEDBY = CREATEDBY,
+        @PRIMARYEMAIL = PRIMARYEMAIL,
+        @DONOTEMAIL = DONOTEMAIL,
+        @EMAILSTATUS = EMAILSTATUS,
+        @OPTOUTDATE = OPTOUTDATE,
+        @OPTOUTMETHOD = OPTOUTMETHOD,
+        @HOMEPHONE = HOMEPHONE,
+        @WORKPHONE = WORKPHONE,
+        @CELLPHONE = CELLPHONE,
+        @COUNTRYID = COUNTRYID,
+        @ADDRESSBLOCK = ADDRESSBLOCK,
+        @CITY = CITY,
+        @STATEID = STATEID,
+        @ZIP = ZIP
+    from
+        USR_BATCHCONSTITUENTUPDATE_EXT
+    where
+        ID = @ID
+    
+return 0;
+                ]]>
+			</c:CreateProcedureSQL>
+		</LoadImplementation>
+
+		<SaveImplementation SPName="USR_USP_DATAFORMTEMPLATE_EDITSAVE_BATCHTYPEEXTENSIONSPEC">
+			<c:CreateProcedureSQL>
+				<![CDATA[
+create procedure dbo.USR_USP_DATAFORMTEMPLATE_EDITSAVE_BATCHTYPEEXTENSIONSPEC
+(
+    @ID uniqueidentifier,
+    @CONSID nvarchar(50),
+    @LASTLOGINDATE datetime,
+    @CREATEDBY nvarchar(50),
+    @PRIMARYEMAIL nvarchar(200),
+    @DONOTEMAIL bit,
+    @EMAILSTATUS nvarchar(100),
+    @OPTOUTDATE datetime,
+    @OPTOUTMETHOD nvarchar(100),
+    @HOMEPHONE nvarchar(200),
+    @WORKPHONE nvarchar(200),
+    @CELLPHONE nvarchar(200),
+    @COUNTRYID uniqueidentifier,
+    @ADDRESSBLOCK nvarchar(500),
+    @CITY nvarchar(200),
+    @STATEID uniqueidentifier,
+    @ZIP nvarchar(200),
+    @CHANGEAGENTID uniqueidentifier = null
+)
+as
+    set nocount on;
+
+    if @CHANGEAGENTID is null  
+        exec dbo.USP_CHANGEAGENT_GETORCREATECHANGEAGENT @CHANGEAGENTID output
+
+    declare @CURRENTDATE datetime
+    set @CURRENTDATE = getdate()
+
+    begin try
+        update USR_BATCHCONSTITUENTUPDATE_EXT set
+            CONSID = @CONSID,
+            LASTLOGINDATE = @LASTLOGINDATE,
+            CREATEDBY = @CREATEDBY,
+            PRIMARYEMAIL = @PRIMARYEMAIL,
+            DONOTEMAIL = @DONOTEMAIL,
+            EMAILSTATUS = @EMAILSTATUS,
+            OPTOUTDATE = @OPTOUTDATE,
+            OPTOUTMETHOD = @OPTOUTMETHOD,
+            HOMEPHONE = @HOMEPHONE,
+            WORKPHONE = @WORKPHONE,
+            CELLPHONE = @CELLPHONE,
+            COUNTRYID = @COUNTRYID,
+            ADDRESSBLOCK = @ADDRESSBLOCK,
+            CITY = @CITY,
+            STATEID = @STATEID,
+            ZIP = @ZIP,
+            CHANGEDBYID = @CHANGEAGENTID,
+            DATECHANGED = @CURRENTDATE
+        where
+            ID = @ID
+    end try
+    begin catch
+        exec dbo.USP_RAISE_ERROR;
+        return 1;
+    end catch
+
+return 0;
+                ]]>
+			</c:CreateProcedureSQL>
+		</SaveImplementation>
+	</EditRow>
+
+	<CommitRow>
+		<AddRow ContextRecordType="CONSTITUENT" DataFormInstanceID="26e4241d-e883-45ef-a7da-6b0e2bba906f" DataFormTemplateID="f16b9539-f709-426a-8cfc-1b22f4b5ad12" RecordIDParameter="CONSTITUENTID">
+			<SaveImplementation SPName="USR_USP_DATAFORMTEMPLATE_COMMITADD_BATCHTYPEEXTENSIONSPEC">
+				<c:CreateProcedureSQL>
+					<![CDATA[
+create procedure dbo.USR_USP_DATAFORMTEMPLATE_COMMITADD_BATCHTYPEEXTENSIONSPEC
+(
+    @ID uniqueidentifier output,
+    @CONSTITUENTID uniqueidentifier,
+    @CHANGEAGENTID uniqueidentifier = null,
+    @CONSID nvarchar(50) = null,
+    @LASTLOGINDATE datetime = null,
+    @CREATEDBY nvarchar(50) = null,
+    @PRIMARYEMAIL nvarchar(200) = null,
+    @DONOTEMAIL bit = null,
+    @EMAILSTATUS nvarchar(100) = null,
+    @OPTOUTDATE datetime = null,
+    @OPTOUTMETHOD nvarchar(100) = null,
+    @HOMEPHONE nvarchar(200) = null,
+    @WORKPHONE nvarchar(200) = null,
+    @CELLPHONE nvarchar(200) = null,
+    @COUNTRYID uniqueidentifier = null,
+    @ADDRESSBLOCK nvarchar(500) = null,
+    @CITY nvarchar(200) = null,
+    @STATEID uniqueidentifier = null,
+    @ZIP nvarchar(200) = null
+)
+as
+    set nocount on;
+
+    if @CHANGEAGENTID is null  
+        exec dbo.USP_CHANGEAGENT_GETORCREATECHANGEAGENT @CHANGEAGENTID output
+
+    declare @CURRENTDATE datetime
+    set @CURRENTDATE = getdate()
+
+    begin try
+        -- Add your insert statement here to commit the data to the system
+    end try
+    begin catch
+        exec dbo.USP_RAISE_ERROR;
+        return 1;
+    end catch
+
+return 0;
+                    ]]>
+				</c:CreateProcedureSQL>
+			</SaveImplementation>
+		</AddRow>
+
+		<EditRow DataFormInstanceID="09062EC5-01A0-4FE4-9AD2-E58D01411E39" DataFormTemplateID="E4AB4EE8-DEC1-4D58-9D71-0BC68E34836A" EditLoadField="ID">
+			<LoadImplementation SPName="USR_USP_DATAFORMTEMPLATE_COMMITEDITLOAD_BATCHTYPEEXTENSIONSPEC">
+				<c:CreateProcedureSQL>
+					<![CDATA[
+create procedure dbo.USR_USP_DATAFORMTEMPLATE_COMMITEDITLOAD_BATCHTYPEEXTENSIONSPEC
+(
+    @ID uniqueidentifier,
+    @TSLONG bigint = 0 output,
+    @DATALOADED bit = 0 output,
+    @CONSID nvarchar(50) = null output,
+    @LASTLOGINDATE datetime = null output,
+    @CREATEDBY nvarchar(50) = null output,
+    @PRIMARYEMAIL nvarchar(200) = null output,
+    @DONOTEMAIL bit = null output,
+    @EMAILSTATUS nvarchar(100) = null output,
+    @OPTOUTDATE datetime = null output,
+    @OPTOUTMETHOD nvarchar(100) = null output,
+    @HOMEPHONE nvarchar(200) = null output,
+    @WORKPHONE nvarchar(200) = null output,
+    @CELLPHONE nvarchar(200) = null output,
+    @COUNTRYID uniqueidentifier = null output,
+    @ADDRESSBLOCK nvarchar(500) = null output,
+    @CITY nvarchar(200) = null output,
+    @STATEID uniqueidentifier = null output,
+    @ZIP nvarchar(200) = null output
+)
+as
+    set nocount on;
+
+    set @DATALOADED = 0;
+    set @TSLONG = 0;
+
+    select
+        @DATALOADED = 1,
+        @TSLONG = TSLONG,
+        @CONSID = CONSID,
+        @LASTLOGINDATE = LASTLOGINDATE,
+        @CREATEDBY = CREATEDBY,
+        @PRIMARYEMAIL = PRIMARYEMAIL,
+        @DONOTEMAIL = DONOTEMAIL,
+        @EMAILSTATUS = EMAILSTATUS,
+        @OPTOUTDATE = OPTOUTDATE,
+        @OPTOUTMETHOD = OPTOUTMETHOD,
+        @HOMEPHONE = HOMEPHONE,
+        @WORKPHONE = WORKPHONE,
+        @CELLPHONE = CELLPHONE,
+        @COUNTRYID = COUNTRYID,
+        @ADDRESSBLOCK = ADDRESSBLOCK,
+        @CITY = CITY,
+        @STATEID = STATEID,
+        @ZIP = ZIP
+    from
+        USR_BATCHCONSTITUENTUPDATE_EXT
+    where
+        ID = @ID
+
+return 0;
+                    ]]>
+				</c:CreateProcedureSQL>
+			</LoadImplementation>
+
+			<SaveImplementation SPName="USR_USP_DATAFORMTEMPLATE_COMMITEDIT_BATCHTYPEEXTENSIONSPEC">
+				<c:CreateProcedureSQL>
+					<![CDATA[
+create procedure dbo.USR_USP_DATAFORMTEMPLATE_COMMITEDIT_BATCHTYPEEXTENSIONSPEC
+(
+    @ID uniqueidentifier,
+    @CHANGEAGENTID uniqueidentifier = null,
+    @CONSID nvarchar(50),
+    @LASTLOGINDATE datetime,
+    @CREATEDBY nvarchar(50),
+    @PRIMARYEMAIL nvarchar(200),
+    @DONOTEMAIL bit,
+    @EMAILSTATUS nvarchar(100),
+    @OPTOUTDATE datetime,
+    @OPTOUTMETHOD nvarchar(100),
+    @HOMEPHONE nvarchar(200),
+    @WORKPHONE nvarchar(200),
+    @CELLPHONE nvarchar(200),
+    @COUNTRYID uniqueidentifier,
+    @ADDRESSBLOCK nvarchar(500),
+    @CITY nvarchar(200),
+    @STATEID uniqueidentifier,
+    @ZIP nvarchar(200)
+)
+as
+    set nocount on;
+
+    if @CHANGEAGENTID is null  
+        exec dbo.USP_CHANGEAGENT_GETORCREATECHANGEAGENT @CHANGEAGENTID output
+
+    declare @CURRENTDATE datetime
+    set @CURRENTDATE = getdate()
+
+    begin try
+        update USR_BATCHCONSTITUENTUPDATE_EXT set
+            CONSID = @CONSID,
+            LASTLOGINDATE = @LASTLOGINDATE,
+            CREATEDBY = @CREATEDBY,
+            PRIMARYEMAIL = @PRIMARYEMAIL,
+            DONOTEMAIL = @DONOTEMAIL,
+            EMAILSTATUS = @EMAILSTATUS,
+            OPTOUTDATE = @OPTOUTDATE,
+            OPTOUTMETHOD = @OPTOUTMETHOD,
+            HOMEPHONE = @HOMEPHONE,
+            WORKPHONE = @WORKPHONE,
+            CELLPHONE = @CELLPHONE,
+            COUNTRYID = @COUNTRYID,
+            ADDRESSBLOCK = @ADDRESSBLOCK,
+            CITY = @CITY,
+            STATEID = @STATEID,
+            ZIP = @ZIP,
+            CHANGEDBYID = @CHANGEAGENTID,
+            DATECHANGED = @CURRENTDATE
+        where
+            ID = @ID
+    end try
+    begin catch
+        exec dbo.USP_RAISE_ERROR;
+        return 1;
+    end catch
+
+return 0;
+                    ]]>
+				</c:CreateProcedureSQL>
+			</SaveImplementation>
+		</EditRow>
+	</CommitRow>
+
+	<FormMetaData xmlns="bb_appfx_commontypes">
+		<FormFields>
+			<FormField FieldID="CONSID" Caption="Cons ID" DataType="String" MaxLength="50" />
+			<FormField FieldID="LASTLOGINDATE" Caption="Last login date" DataType="Date" IncludeTime="true" />
+			<FormField FieldID="CREATEDBY" Caption="Created by" DataType="String" MaxLength="50" />
+			<FormField FieldID="PRIMARYEMAIL" Caption="Email address" DataType="String" MaxLength="200" />
+			<FormField FieldID="DONOTEMAIL" Caption="Do not email" DataType="Boolean" />
+			<FormField FieldID="EMAILSTATUS" Caption="Email Status" DataType="String" MaxLength="100" />
+			<FormField FieldID="OPTOUTDATE" Caption="Opt out date" DataType="Date" />
+			<FormField FieldID="OPTOUTMETHOD" Caption="Opt out method" DataType="String" MaxLength="100" />
+			<FormField FieldID="HOMEPHONE" Caption="Home phone" DataType="String" MaxLength="200" />
+			<FormField FieldID="WORKPHONE" Caption="Work phone" DataType="String" MaxLength="200" />
+			<FormField FieldID="CELLPHONE" Caption="Cell phone" DataType="String" MaxLength="200" />
+			<FormField FieldID="COUNTRYID" Caption="Country" DataType="Guid" />
+			<FormField FieldID="ADDRESSBLOCK" Caption="Address block" DataType="String" MaxLength="500" />
+			<FormField FieldID="CITY" Caption="City" DataType="String" MaxLength="200" />
+			<FormField FieldID="STATEID" Caption="State" DataType="Guid" />
+			<FormField FieldID="ZIP" Caption="Zip" DataType="String" MaxLength="200" />
+		</FormFields>
+	</FormMetaData>
+
+</BatchTypeExtensionSpec>

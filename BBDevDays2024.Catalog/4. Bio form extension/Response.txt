@@ -1,0 +1,16 @@
+﻿$(document).ready(function() {
+    // Select the target container to move the elements beneath
+    var target = $("tr[id*='_GENDERCODE_container']");
+
+    // Select the containers to be moved
+    var containersToMove = [
+        $("tr[id*='_EXTENSIONFIELD1_container']"),
+        $("tr[id*='_EXTENSIONFIELD2_container']")
+    ];
+
+    // Append each container to the target container
+    $.each(containersToMove, function(index, container) {
+        container.insertAfter(target);
+        target = container;  // Update the target to the last moved container
+    });
+});

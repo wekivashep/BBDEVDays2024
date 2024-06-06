@@ -1,0 +1,209 @@
+﻿given the following html, write a jquery script to move ctrl_7906b2ea_93f5_4808_ad85_6b48ed591932_EXTENSIONFIELD1_container and ctrl_7906b2ea_93f5_4808_ad85_6b48ed591932_EXTENSIONFIELD2_container to beneath ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_GENDERCODE_container.  At design time we do not know the "ctrl_7906b2ea_93f5_4808_ad85_6b48ed591932_" and "ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_" parts of the name so the script needs to use wildcards.
+
+<div id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_IndividualBiographicalEditForm3">
+	<h2 id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_FORMHEADER_value" class="bbui-pre">Edit personal information</h2>
+	<div class="bbui-forms-tabs-main">
+		<div title="">
+			<div class="bbui-forms-fieldset-column">
+				<table>
+					<tbody>
+						<tr id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_LASTNAME_container">
+							<td>
+								<label id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_LASTNAME_caption" for="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_LASTNAME_value">Last name:</label>
+							</td>
+							<td colspan="3" id="ext-gen3207">
+								<input id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_LASTNAME_value" type="text" class="x-form-text x-form-field" maxlength="100"> </td>
+							</tr>
+							<tr id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_FIRSTNAME_container">
+								<td>
+									<label id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_FIRSTNAME_caption" for="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_FIRSTNAME_value">First name:</label>
+								</td>
+								<td colspan="3" id="ext-gen3208">
+									<input id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_FIRSTNAME_value" type="text" class="x-form-text x-form-field" maxlength="50"> </td>
+								</tr>
+								<tr id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_MIDDLENAME_container">
+									<td>
+										<label id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_MIDDLENAME_caption" for="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_MIDDLENAME_value">Middle name:</label>
+									</td>
+									<td colspan="3" id="ext-gen3209">
+										<input id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_MIDDLENAME_value" type="text" class="x-form-text x-form-field" maxlength="50"> </td>
+									</tr>
+									<tr>
+										<td>
+											<label id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_TITLECODEID_caption" for="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_TITLECODEID_value">Title:</label>
+										</td>
+										<td id="ext-gen3212">
+											<div class="x-form-field-wrap x-form-field-trigger-wrap" id="ext-gen3213" style="width: 65px;">
+												<input id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_TITLECODEID_value" type="text" class="bbui-listwidth-150 x-form-text x-form-field" autocomplete="off" style="width: 38.3333px;" spellcheck="false">
+													<img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="" class="x-form-trigger x-form-arrow-trigger" id="ext-gen3214"/>
+												</td>
+												<td style="padding-left: 10px; padding-right: 0px;">
+													<label id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_TITLE2CODEID_caption" for="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_TITLE2CODEID_value">Title 2:</label>
+												</td>
+												<td id="ext-gen3230">
+													<div class="x-form-field-wrap x-form-field-trigger-wrap" id="ext-gen3231" style="width: 65px;">
+														<input id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_TITLE2CODEID_value" type="text" class="bbui-listwidth-150 x-form-text x-form-field" autocomplete="off" style="width: 38.3333px;" spellcheck="false">
+															<img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="" class="x-form-trigger x-form-arrow-trigger" id="ext-gen3232"/>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<label id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_SUFFIXCODEID_caption" for="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_SUFFIXCODEID_value">Suffix:</label>
+														</td>
+														<td id="ext-gen3215">
+															<div class="x-form-field-wrap x-form-field-trigger-wrap" id="ext-gen3216" style="width: 65px;">
+																<input id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_SUFFIXCODEID_value" type="text" class="bbui-listwidth-150 x-form-text x-form-field" autocomplete="off" style="width: 38.3333px;" spellcheck="false">
+																	<img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="" class="x-form-trigger x-form-arrow-trigger" id="ext-gen3217"/>
+																</td>
+																<td style="padding-left: 10px; padding-right: 0px;">
+																	<label id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_SUFFIX2CODEID_caption" for="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_SUFFIX2CODEID_value">Suffix 2:</label>
+																</td>
+																<td id="ext-gen3233">
+																	<div class="x-form-field-wrap x-form-field-trigger-wrap" id="ext-gen3234" style="width: 65px;">
+																		<input id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_SUFFIX2CODEID_value" type="text" class="bbui-listwidth-150 x-form-text x-form-field" autocomplete="off" style="width: 38.3333px;" spellcheck="false">
+																			<img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="" class="x-form-trigger x-form-arrow-trigger" id="ext-gen3235"/>
+																		</td>
+																	</tr>
+																	<tr id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_NICKNAME_container">
+																		<td>
+																			<label id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_NICKNAME_caption" for="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_NICKNAME_value">Nickname:</label>
+																		</td>
+																		<td colspan="3" id="ext-gen3211">
+																			<input id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_NICKNAME_value" type="text" class="x-form-text x-form-field" maxlength="50"> </td>
+																		</tr>
+																		<tr id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_MAIDENNAME_container">
+																			<td>
+																				<label id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_MAIDENNAME_caption" for="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_MAIDENNAME_value">Maiden name:</label>
+																			</td>
+																			<td colspan="3" id="ext-gen3210">
+																				<input id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_MAIDENNAME_value" type="text" class="x-form-text x-form-field" maxlength="100"> </td>
+																			</tr>
+																			<tr id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_MARITALSTATUSCODEID_container">
+																				<td>
+																					<label id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_MARITALSTATUSCODEID_caption" for="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_MARITALSTATUSCODEID_value">Marital status:</label>
+																				</td>
+																				<td colspan="3" id="ext-gen3227">
+																					<div class="x-form-field-wrap x-form-field-trigger-wrap" id="ext-gen3228" style="width: 201px;">
+																						<input id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_MARITALSTATUSCODEID_value" type="text" class="x-form-text x-form-field" autocomplete="off" style="width: 174.333px;" spellcheck="false">
+																							<img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="" class="x-form-trigger x-form-arrow-trigger" id="ext-gen3229"/>
+																						</td>
+																					</tr>
+																				</tbody>
+																			</table>
+																		</div>
+																		<div class="bbui-forms-fieldset-column">
+																			<table>
+																				<tbody>
+																					<tr id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_PICTURE_container">
+																						<td valign="top">
+																							<label id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_PICTURE_caption" for="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_PICTURE_value">Image:</label>
+																						</td>
+																						<td>
+																							<table id="bbui-gen-3225_wrapper" cellpadding="0" cellspacing="0" style="margin: 0px; padding: 0px">
+																								<tbody>
+																									<tr style="vertical-align: top;">
+																										<td id="bbui-gen-3225_td">
+																											<div id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_PICTURE_value" style="height: 79px; width: 79px; overflow: hidden;" class="bbui-thumbnail-PICTURETHUMBNAIL">
+																												<img id="bbui-gen-3225" style="height: 72.68px; width: auto;" src="https://crm.shephosting.com/bbAppFx/uimodel/UIModelingService.ashx?action=getFieldImage&amp;databaseName=BBCRM_Build&amp;formSessionId=44b535a0-cbd9-41bd-b36e-976dfe2c4631&amp;modelInstanceId=89b7f956-5ad8-4d2e-a097-c18c7d3f047c&amp;fieldId=PICTURETHUMBNAIL&amp;_reqid=1717683640632"/>
+																											</td>
+																											<td>
+																												<form action="https://crm.shephosting.com/bbAppFx/uimodel/UIModelingService.ashx?action=uploadFieldImage&amp;databaseName=BBCRM_Build&amp;formSessionId=44b535a0-cbd9-41bd-b36e-976dfe2c4631&amp;modelInstanceId=89b7f956-5ad8-4d2e-a097-c18c7d3f047c&amp;fieldId=PICTURE&amp;thumbnailFieldId=PICTURETHUMBNAIL" name="bbui-gen-3225_uploadform" target="bbui-gen-3225_iframetarget" method="post" enctype="multipart/form-data">
+																													<input id="bbui-gen-3225_fileinput" name="bbui-gen-3225_fileinput" class="bbui-forms-imagefield-input" type="file" size="1" style="cursor: pointer; opacity: 0; position: absolute; width: 82.6667px; z-index: 2; height: 16px;" title="Choose file"/>
+																													<iframe id="bbui-gen-3225_iframetarget" name="bbui-gen-3225_iframetarget" style="display: none;"/>
+																													<a id="bbui-gen-3225_chooseimage" href="#" class="bbui-valuestyles-openfile-imageandtext" tabindex="-1" style="position: relative;">Choose file</a>
+																													<a id="bbui-gen-3225_clearimage" href="#" class="bbui-valuestyles-clear-imageandtext" title="Clear file" style="">Clear file</a>
+																												</td>
+																											</tr>
+																										</tbody>
+																									</table>
+																								</td>
+																							</tr>
+																							<tr id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_GENDERCODE_container">
+																								<td>
+																									<label id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_GENDERCODE_caption" for="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_GENDERCODE_value">Gender:</label>
+																								</td>
+																								<td id="ext-gen3218">
+																									<div class="x-form-field-wrap x-form-field-trigger-wrap" id="ext-gen3219" style="overflow: hidden; width: 201px;">
+																										<input id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_GENDERCODE_value" type="text" class="x-form-text x-form-field" autocomplete="off" style="width: 174.333px;" spellcheck="false">
+																											<span class="x-form-twin-triggers" id="ext-gen3220">
+																												<img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="x-form-trigger x-form-arrow-trigger" id="ext-gen3221"/>
+																											</div>
+																										</td>
+																									</tr>
+																									<tr id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_BIRTHDATE_container">
+																										<td style="white-space: nowrap;">
+																											<label id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_BIRTHDATE_caption" for="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_BIRTHDATE_value">Birth date:</label>
+																										</td>
+																										<td>
+																											<table style="white-space: nowrap; border-collapse: collapse;">
+																												<tbody>
+																													<tr>
+																														<td style="padding-left: 0px;" id="ext-gen3222">
+																															<div class="x-form-field-wrap x-form-field-trigger-wrap" id="ext-gen3223" style="width: 101px;">
+																																<input id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_BIRTHDATE_value" type="text" class="bbui-forms-xs x-form-text x-form-field" style="width: 74.3333px;" placeholder="mm/dd/yyyy">
+																																	<img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="" class="x-form-trigger x-form-date-trigger" id="ext-gen3224"/>
+																																</td>
+																																<td>
+																																	<span id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_INVALIDAGEIMAGE_value" style="margin-right: 0px; display: none;" class="bbui-valuestyles-warning-imageonly" title=""/>
+																																</td>
+																																<td>
+																																	<label id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_AGESTRING_caption" for="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_AGESTRING_value">Age:</label>
+																																	<label id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_AGESTRING_value" class="bbui-pre">17</label>
+																																</td>
+																															</tr>
+																														</tbody>
+																													</table>
+																												</td>
+																											</tr>
+																											<tr id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_WEBADDRESS_container">
+																												<td>
+																													<label id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_WEBADDRESS_caption" for="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_WEBADDRESS_value">Website:</label>
+																												</td>
+																												<td id="ext-gen3226">
+																													<input id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_WEBADDRESS_value" type="text" class="x-form-text x-form-field" maxlength="2047"> </td>
+																												</tr>
+																												<tr id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_GIVESANONYMOUSLY_container">
+																													<td colspan="2">
+																														<input id="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_GIVESANONYMOUSLY_value" type="checkbox" style="width: auto">
+																															<label for="ctrl_89b7f956_5ad8_4d2e_a097_c18c7d3f047c_GIVESANONYMOUSLY_value">Gives anonymously</label>
+																														</td>
+																													</tr>
+																												</tbody>
+																											</table>
+																										</div>
+																										<div style="clear: both;"/>
+																										<div class="bbui-forms-extensions-afterparent">
+																											<div id="ctrl_7906b2ea_93f5_4808_ad85_6b48ed591932_USRBIOEXTENSIONEditForm">
+																												<h2 id="ctrl_7906b2ea_93f5_4808_ad85_6b48ed591932_FORMHEADER_value" style="display: none;"/>
+																												<table>
+																													<tbody>
+																														<tr id="ctrl_7906b2ea_93f5_4808_ad85_6b48ed591932_EXTENSIONFIELD1_container">
+																															<td/>
+																															<td>
+																																<input id="ctrl_7906b2ea_93f5_4808_ad85_6b48ed591932_EXTENSIONFIELD1_value" type="checkbox" style="width: auto;">
+																																	<label for="ctrl_7906b2ea_93f5_4808_ad85_6b48ed591932_EXTENSIONFIELD1_value">Extensionfield1</label>
+																																</td>
+																															</tr>
+																															<tr id="ctrl_7906b2ea_93f5_4808_ad85_6b48ed591932_EXTENSIONFIELD2_container">
+																																<td valign="top">
+																																	<label id="ctrl_7906b2ea_93f5_4808_ad85_6b48ed591932_EXTENSIONFIELD2_caption" for="ctrl_7906b2ea_93f5_4808_ad85_6b48ed591932_EXTENSIONFIELD2_value">Extensionfield2:</label>
+																																</td>
+																																<td id="ext-gen3236">
+																																	<textarea id="ctrl_7906b2ea_93f5_4808_ad85_6b48ed591932_EXTENSIONFIELD2_value" rows="3" cols="1" class="x-form-textarea x-form-field"/>
+																																</td>
+																															</tr>
+																														</tbody>
+																													</table>
+																													<!-- To define fields in multiple columns on the form, simply add/move the fields to this div
+        <div class="bbui-forms-fieldset-column">
+            <table>
+            </table>
+        </div>
+        -->
+																												</div>
+																											</div>
+																											<div style="clear: both;"/>
+																										</div>
+																									</div>
+																									<div style="clear: both;"/>
+																								</div>

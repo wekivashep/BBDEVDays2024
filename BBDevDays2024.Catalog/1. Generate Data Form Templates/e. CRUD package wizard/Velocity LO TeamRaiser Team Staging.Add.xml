@@ -1,0 +1,82 @@
+<AddDataFormTemplateSpec 
+    xmlns:c="bb_appfx_commontypes"
+    ID="feaed4a8-7806-4441-9861-fc9968d671f8"
+    Name="Velocity LO TeamRaiser Team Staging Add Form"
+    Description="Used for adding a new Velocity LO TeamRaiser Team Staging"
+    Author="Wekiva Software"
+    RecordType="Velocity LO TeamRaiser Team Staging"
+    DataFormInstanceID="3d0dace1-eef4-4448-b7ab-335c8ceffbc9"
+    c:SecurityUIFolder="Velocity LO TeamRaiser Team Staging"
+    xmlns="bb_appfx_adddataformtemplate"
+    >
+    <SPDataForm>
+        <SaveImplementation SPName="USR_USP_DATAFORMTEMPLATE_ADD_VELOCITY_LO_TEAMRAISER_TEAM_STAGING">
+            <c:CreateProcedureSQL>
+<![CDATA[
+create procedure dbo.USR_USP_DATAFORMTEMPLATE_ADD_VELOCITY_LO_TEAMRAISER_TEAM_STAGING
+(
+    @ID uniqueidentifier = null output,
+    @CHANGEAGENTID uniqueidentifier = null,
+    @TEAMID nvarchar(20) = '',
+    @EVENTID nvarchar(20) = '',
+    @COMPANYID nvarchar(20) = '',
+    @CAPTAINCONSID nvarchar(20) = '',
+    @NAME nvarchar(200) = '',
+    @DESCRIPTION nvarchar(200) = '',
+    @DIVISION nvarchar(100) = '',
+    @TYPE nvarchar(100) = '',
+    @GOAL money = 0,
+    @MEMBERGOAL money = 0,
+    @ISHONORARYTEAM bit = 0,
+    @PREVIOUSTEAMID nvarchar(20) = ''
+)
+as
+
+set nocount on;
+
+if @ID is null
+    set @ID = newid()
+
+if @CHANGEAGENTID is null  
+    exec dbo.USP_CHANGEAGENT_GETORCREATECHANGEAGENT @CHANGEAGENTID output
+
+declare @CURRENTDATE datetime
+set @CURRENTDATE = getdate()
+
+begin try
+	-- handle inserting the data
+	insert into dbo.USR_VELOCITY_LO_TR_TEAMS
+		(ID, TEAMID, EVENTID, COMPANYID, CAPTAINCONSID, NAME, DESCRIPTION, DIVISION, TYPE, GOAL, MEMBERGOAL, ISHONORARYTEAM, PREVIOUSTEAMID, ADDEDBYID, CHANGEDBYID, DATEADDED, DATECHANGED)
+    values
+		(@ID, @TEAMID, @EVENTID, @COMPANYID, @CAPTAINCONSID, @NAME, @DESCRIPTION, @DIVISION, @TYPE, @GOAL, @MEMBERGOAL, @ISHONORARYTEAM, @PREVIOUSTEAMID, @CHANGEAGENTID, @CHANGEAGENTID, @CURRENTDATE, @CURRENTDATE)
+end try
+
+begin catch
+    exec dbo.USP_RAISE_ERROR
+    return 1
+end catch
+
+return 0				
+
+]]>
+</c:CreateProcedureSQL>
+        </SaveImplementation>
+    </SPDataForm>
+    <c:FormMetaData FixedDialog="true">
+        <c:FormFields>
+            <c:FormField FieldID="TEAMID" MaxLength="20" Caption="Teamid" />
+            <c:FormField FieldID="EVENTID" MaxLength="20" Caption="Eventid" />
+            <c:FormField FieldID="COMPANYID" MaxLength="20" Caption="Companyid" />
+            <c:FormField FieldID="CAPTAINCONSID" MaxLength="20" Caption="Captainconsid" />
+            <c:FormField FieldID="NAME" MaxLength="200" Caption="Name" Multiline="true" />
+            <c:FormField FieldID="DESCRIPTION" MaxLength="200" Caption="Description" Multiline="true" />
+            <c:FormField FieldID="DIVISION" MaxLength="100" Caption="Division" />
+            <c:FormField FieldID="TYPE" MaxLength="100" Caption="Type" />
+            <c:FormField FieldID="GOAL" DataType="Money" Caption="Goal" />
+            <c:FormField FieldID="MEMBERGOAL" DataType="Money" Caption="Membergoal" />
+            <c:FormField FieldID="ISHONORARYTEAM" DataType="Boolean" Caption="Ishonoraryteam" />
+            <c:FormField FieldID="PREVIOUSTEAMID" MaxLength="20" Caption="Previousteamid" />
+        </c:FormFields>
+        <c:FormUIComponent />
+    </c:FormMetaData>
+</AddDataFormTemplateSpec>

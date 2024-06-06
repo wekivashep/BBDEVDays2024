@@ -1,0 +1,3 @@
+﻿return Regex.Replace(Row["number"].ToString(), @"\D", "");
+
+return new string(Row["number"].ToString().Where(char.IsDigit).ToArray());
